@@ -33,13 +33,32 @@ built in wifi access point.
 
 ## noteable gotcha's
 
-For some reason that I could not discover despite spending many hours trying,
-my Onion Omega seems to be ignoring `O_SYNC` and `fsync(int)` when writing
-to `/dev/ttyUSB0`, but apparently only when the standard input to the
-display update tool was a pipe and not a `tty` nor a `pty`.  So, when
-the tool tried to close its filehandle for `/dev/ttyUSB0`, the serial output
-buffers were getting flushed (rather than drained) no matter what I tried.
+* **truncated serial output issues**
 
-The solution to this was to just add `cat /dev/ttyUSB0 > /dev/null &` to
-`/etc/rc.local`, which forces the USB serial port to remain open at all times,
-and thus avoiding the data truncation issue.
+  For some reason that I could not discover despite spending many hours trying,
+  my Onion Omega seems to be ignoring `O_SYNC` and `fsync(int)` when writing
+  to `/dev/ttyUSB0`, but apparently only when the standard input to the
+  display update tool was a pipe and not a `tty` nor a `pty`.  So, when
+  the tool tried to close its filehandle for `/dev/ttyUSB0`, the serial output
+  buffers were getting flushed (rather than drained) no matter what I tried.
+
+  The solution to this was to just add `cat /dev/ttyUSB0 > /dev/null &` to
+  `/etc/rc.local`, which forces the USB serial port to remain open at all times,
+  and thus avoiding the data truncation issue.
+
+* **`gcc` via `opkg` doesn't fit on an Onion Omega**
+
+  This issue wasn't too terribly hard to get around.  Since I have two Onion
+  Omegas, I used one of them as my "build machine".  In that one I plugged in
+  a 12GB flash drive formatted `ext4`, copied `/usr` to the drive, then
+  mounted with `--bind` on top of `/usr`.  This resulted in there being
+  plenty of space on `/usr` for `gcc`.
+
+  ```
+mount /dev/sda1 /flash
+cp -Rp /usr /flash
+mount --bind /flash/usr /usr
+  ```
+
+  After those commands, I was able to install `gcc` using
+  `opkg install gcc --force-space`.
