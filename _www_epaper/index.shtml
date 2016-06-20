@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>pictureframe of things</title>
+<style>
+
+@font-face {
+  font-family: 'LiberationMono-Bold';
+  src: url('LiberationMono-Bold.ttf');
+}
+
+body {
+  margin: 0;
+  background-color: #888;
+  font-family: 'LiberationMono-Bold', monospace;
+  font-weight: bold;
+}
+
+a {
+  color: #44c;
+  font-weight: bold;
+}
+
+textarea#display {
+  font-family: 'LiberationMono-Bold', monospace;
+  font-weight: bold;
+  background-color: #9ab;
+  color: #222;
+  font-size: 15px;
+  letter-spacing: 4px;
+  line-height: 15px;
+  position: absolute;
+  top: 220px;
+  left: 323px;
+  width: 420px;
+  height: 300px;
+  overflow: hidden;
+  resize: none;
+}
+
+button#alert {
+  font-family: 'LiberationMono-Bold', monospace;
+  font-weight: bold;
+  position: absolute; 
+  top: 575px; 
+  left: 425px; 
+  width: 200px; 
+  height: 80px;
+}
+
+div#header {
+  position: absolute; 
+  top: 10px; 
+  left: 10px; 
+  font-size: 32px;
+  color: #222;
+  background-color: rgba(255,255,255,0.75);
+  padding: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(0,0,0,0.75);
+}
+
+div#subheader {
+  position: absolute; 
+  top: 90px; 
+  left: 175px; 
+  font-size: 16px;
+  color: #ddd;
+  background-color: rgba(0,0,0,0.75);
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255,255,255,0.75);
+}
+
+</style>
+</head>
+<body>
+<img src="frame.jpg" style="position: absolute; top: 0; left: 0; z-index: -1;"/>
+<textarea id="display" name="t" form="sayhi" rows="20" cols="32"><!-- #include virtual="display.pl" --></textarea>
+<div id="header">
+pictureframe of things
+</div>
+<div id="subheader">type on the screen, then click upload</div>
+<form action="alert.pl" style="display:inline;" id="sayhi" method="post">
+<button id="alert" type="submit" name="">upload picure frame</button>
+</form>
+</body>
+</html>
