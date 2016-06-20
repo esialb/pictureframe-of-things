@@ -30,3 +30,16 @@ back to the Onion Omega's lighttpd server.
 If you don't care about exposing it to the internet, it will still be
 available for updates on your LAN, as well as over the Onion Omega's
 built in wifi access point.
+
+## noteable gotcha's
+
+For some reason that I could not discover despite spending many hours trying,
+my Onion Omega seems to be ignoring `O_SYNC` and `fsync(int)` when writing
+to `/dev/ttyUSB0`, but apparently only when the standard input to the
+display update tool was a pipe and not a `tty` nor a `pty`.  So, when
+the tool tried to close its filehandle for `/dev/ttyUSB0`, the serial output
+buffers were getting flushed (rather than drained) no matter what I tried.
+
+The solution to this was to just add `cat /dev/ttyUSB0 > /dev/null &` to
+`/etc/rc.local`, which forces the USB serial port to remain open at all times,
+and thus avoiding the data truncation issue.
