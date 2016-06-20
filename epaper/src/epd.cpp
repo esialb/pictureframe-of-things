@@ -103,7 +103,7 @@ int epd_init(const char *tty_dev)
 		return -1;
 
 	/* Error Handling */
-	if(tcgetattr(STDOUT_FILENO, &tty) != 0)
+	if(tcgetattr(tty_fd, &tty) != 0)
 		return -1;
 
 	cfsetspeed(&tty, B115200);
@@ -113,7 +113,7 @@ int epd_init(const char *tty_dev)
 
 	tty.c_cflag |= HUPCL;
 
-	if(tcsetattr(STDOUT_FILENO, TCSADRAIN, &tty) != 0)
+	if(tcsetattr(tty_fd, TCSADRAIN, &tty) != 0)
 		return -1;
 
 	return tty_fd;

@@ -19,7 +19,7 @@
 
 
 int main(int argc, const char **argv) {
-	const char *tty_dev = (argc == 2 ? argv[1] : NULL);
+	const char *tty_dev = (argc >= 2 ? argv[1] : NULL);
 	int tty_fd;
 	if((tty_fd = epd_init(tty_dev)) < 0) {
 		printf("Unable to open tty %s\n", tty_dev);
