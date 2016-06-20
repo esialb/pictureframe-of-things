@@ -74,6 +74,23 @@ div#subheader {
   border-color: rgba(255,255,255,0.75);
 }
 
+div#github {
+  position: absolute; 
+  top: 700px; 
+  left: 910px; 
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255,255,255,0.75);
+  background-color: rgba(0,0,0,0.75);
+}
+
+div#github * {
+  font-size: 16px;
+  color: #ddd;
+  text-decoration: none;
+}
+
 </style>
 </head>
 <body>
@@ -86,5 +103,6 @@ pictureframe of things
 <form action="alert.pl" style="display:inline;" id="sayhi" method="post">
 <button id="alert" type="submit" name="">upload picure frame</button>
 </form>
+<div id="github"><a href="https://github.com/esialb/pictureframe-of-things">github</a></div>
 </body>
 </html>
