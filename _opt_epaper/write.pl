@@ -49,6 +49,12 @@ open(BUFFER, ">buffer.txt") or die "write buffer";
 print(BUFFER map {"$_\n"} @screen);
 close(BUFFER);
 
+#my $ts = `date -u '+frame__%Y-%m-%d__%H-%M-%S.txt'`;
+#chomp($ts);
+#open(BUFFER, ">/www/epaper/logs/$ts");
+#print(BUFFER map {"$_\n"} @screen);
+#close(BUFFER);
+
 #print("+" . ("-" x 32) . "+\n");
 #print(map { /(.{32})/; "|$1|\n"} @screen);
 #print("+" . ("-" x 32) . "+\n");

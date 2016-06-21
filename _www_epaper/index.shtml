@@ -5,50 +5,53 @@
 <style>
 
 @font-face {
-  font-family: 'LiberationMono-Bold';
-  src: url('LiberationMono-Bold.ttf');
+  font-family: 'LiberationMono-Regular';
+  src: url('LiberationMono-Regular.ttf');
+}
+
+body, textarea, button {
+  font-family: 'LiberationMono-Regular', monospace;
 }
 
 body {
   margin: 0;
   background-color: #888;
-  font-family: 'LiberationMono-Bold', monospace;
-  font-weight: bold;
 }
 
-a {
-  color: #44c;
-  font-weight: bold;
+#framebg {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 1000px;
+  z-index: -1;
 }
 
-textarea#display {
-  font-family: 'LiberationMono-Bold', monospace;
-  font-weight: bold;
+#display {
   background-color: #9ab;
   color: #222;
   font-size: 15px;
-  letter-spacing: 4px;
+  letter-spacing: calc(400px / 32 - 1ch);
   line-height: 15px;
   position: absolute;
-  top: 220px;
-  left: 323px;
-  width: 420px;
+  top: 210px;
+  left: 320px;
+  width: 400px;
   height: 300px;
   overflow: hidden;
   resize: none;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-button#alert {
-  font-family: 'LiberationMono-Bold', monospace;
-  font-weight: bold;
+#alert {
   position: absolute; 
-  top: 575px; 
+  top: 560px; 
   left: 425px; 
   width: 200px; 
   height: 80px;
 }
 
-div#header {
+#header {
   position: absolute; 
   top: 10px; 
   left: 10px; 
@@ -61,7 +64,7 @@ div#header {
   border-color: rgba(0,0,0,0.75);
 }
 
-div#subheader {
+#subheader {
   position: absolute; 
   top: 90px; 
   left: 175px; 
@@ -74,7 +77,7 @@ div#subheader {
   border-color: rgba(255,255,255,0.75);
 }
 
-div#github {
+#github {
   position: absolute; 
   top: 700px; 
   left: 910px; 
@@ -85,7 +88,24 @@ div#github {
   background-color: rgba(0,0,0,0.75);
 }
 
-div#github * {
+#github * {
+  font-size: 16px;
+  color: #ddd;
+  text-decoration: none;
+}
+
+#discuss {
+  position: absolute; 
+  top: 700px; 
+  left: 800px; 
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgba(255,255,255,0.75);
+  background-color: rgba(0,0,0,0.75);
+}
+
+#discuss * {
   font-size: 16px;
   color: #ddd;
   text-decoration: none;
@@ -94,15 +114,15 @@ div#github * {
 </style>
 </head>
 <body>
-<img src="frame.jpg" style="position: absolute; top: 0; left: 0; z-index: -1;"/>
-<textarea id="display" name="t" form="sayhi" rows="20" cols="32"><!-- #include virtual="display.pl" --></textarea>
-<div id="header">
-pictureframe of things
-</div>
+<img id="framebg" src="frame.jpg"/>
+<textarea id="display" name="t" form="sayhi">
+<!-- #include virtual="display.pl" --></textarea>
+<div id="header">pictureframe of things</div>
 <div id="subheader">type on the screen, then click upload</div>
 <form action="alert.pl" style="display:inline;" id="sayhi" method="post">
 <button id="alert" type="submit" name="">upload picure frame</button>
 </form>
+<div id="discuss"><a href="http://community.onion.io/topic/847/pictureframe-of-things">discuss</a></div>
 <div id="github"><a href="https://github.com/esialb/pictureframe-of-things">github</a></div>
 </body>
 </html>
