@@ -30,12 +30,12 @@ body {
   background-color: #9ab;
   color: #222;
   font-size: 15px;
-  letter-spacing: calc(400px / 33 - 1ch);
+  letter-spacing: calc(400px / 32 - 1ch);
   line-height: 15px;
   position: absolute;
   top: 210px;
-  left: 320px;
-  width: 400px;
+  left: 312px;
+  width: calc(400px + 400px / 32 - 1ch);
   height: 300px;
   overflow: hidden;
   resize: none;
