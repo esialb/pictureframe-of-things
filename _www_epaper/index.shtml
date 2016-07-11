@@ -30,7 +30,7 @@ body {
   background-color: #9ab;
   color: #222;
   font-size: 15px;
-  letter-spacing: calc(400px / 32 - 1ch);
+  letter-spacing: calc(400px / 33 - 1ch);
   line-height: 15px;
   position: absolute;
   top: 210px;
